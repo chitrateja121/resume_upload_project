@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Upload Resume</h3>
+
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<input type="file" name="resume" required>
+<button type="submit">Upload</button>
+</form>
+
+<p style="text-align:center;">
+    <a href="/dashboard/">Back to Dashboard</a>
+</p>
+{% endblock %}

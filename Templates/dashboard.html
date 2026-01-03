@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="nav">
+    <a href="/upload/">Upload Resume</a> |
+    <a href="/logout/">Logout</a>
+</div>
+
+<h3>Your Uploaded Resumes</h3>
+
+<ul>
+{% for r in resumes %}
+    <li>
+        {{ r.resume.name }}
+        <br>
+        <small>{{ r.uploaded_at }}</small>
+        <br>
+        <a href="{% url 'delete_resume' r.id %}"
+           onclick="return confirm('Are you sure you want to delete this resume?');"
+           style="color:red;">
+           Delete
+        </a>
+    </li>
+{% empty %}
+    <li>No resumes uploaded</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
